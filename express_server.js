@@ -12,9 +12,14 @@ const bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
-
+  //tmp = req.body.longURL;
 function generateRandomString() {
-return Math.random().toString(36).replace('0.', '').slice(4);
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  for(var i = 0; i < 6; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+  return text;
 }
 
 var urlDatabase = {
@@ -26,13 +31,20 @@ app.get("/", (req, res) => {
   res.send("Hello!");
 });
 
+app.get("/u/:shortURL", (req, res) => {
+  // let longURL = ...
+  let longURL = urlDatabase[req.params.shortURL];
+  res.redirect(longURL);
+});
+
 app.get("/urls/new", (req, res) => {
   res.render("urls_new");
 });
 
 app.post("/urls", (req, res) => {
-  console.log(req.body);  // debug statement to see POST parameters
-  res.send("Ok");         // Respond with 'Ok' (we will replace this)
+  var randString = generateRandomString();
+  urlDatabase[randString] = req.body.longURL;
+  res.redirect(`/urls/${randString}`)        // Respond with 'Ok' (we will replace this)
 });
 
 app.get("/urls.json", (req, res) => {
