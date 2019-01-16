@@ -11,6 +11,8 @@ const PORT = 8080; // default port 8080
 const bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static(__dirname));
+
 app.set("view engine", "ejs");
   //tmp = req.body.longURL;
 function generateRandomString() {
