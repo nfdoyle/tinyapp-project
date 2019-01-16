@@ -5,14 +5,20 @@
 </head>
 
 
-<body>
+<body style="font-size:20px; padding:50px;">
     <header>
         <% include ./partials/_header %>
     </header>
     <!-- Add your EJS code here -->
     <h1>
-        <%= urls[shortURL]%> - <%=shortURL%>
+        ShortURL: <%=shortURL%>
     </h1>
+    <form action="/urls/:id" method="POST">
+      <label for="longURL">Update URL:</label>
+      <input id="longURL" type="text" name="longURL" placeholder=<%= urls[shortURL]%> style="width: 300px">
+      <input id="shortURL" name="shortURL" type="hidden" value=<%= shortURL%>>
+      <input type="submit" value="Update">
+    </form>
 </body>
 </html>
 

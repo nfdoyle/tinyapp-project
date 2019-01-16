@@ -5,9 +5,9 @@ allow users to shorten long URLs much like TinyURL.com and bit.ly do.
 @nfdoyle
 *******************************************************************************/
 
-var express = require("express");
-var app = express();
-var PORT = 8080; // default port 8080
+const express = require("express");
+const app = express();
+const PORT = 8080; // default port 8080
 const bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -22,13 +22,14 @@ function generateRandomString() {
   return text;
 }
 
-var urlDatabase = {
+const urlDatabase = {
   "b2xVn2": "http://www.lighthouselabs.ca",
   "9sm5xK": "http://www.google.com"
 };
 
 app.get("/", (req, res) => {
-  res.send("Hello!");
+  
+  res.redirect(`/urls/`)
 });
 
 app.get("/u/:shortURL", (req, res) => {
@@ -42,13 +43,25 @@ app.get("/urls/new", (req, res) => {
 });
 
 app.post("/urls", (req, res) => {
-  var randString = generateRandomString();
+  let randString = generateRandomString();
   urlDatabase[randString] = req.body.longURL;
   res.redirect(`/urls/${randString}`)        // Respond with 'Ok' (we will replace this)
 });
 
 app.get("/urls.json", (req, res) => {
   res.json(urlDatabase);
+});
+
+app.post('/urls/:id/delete', (req, res) => {
+  delete urlDatabase[req.params.id];
+  res.redirect('/urls');
+});
+
+app.post('/urls/:id', (req, res) => {
+  let longURL = req.body.longURL;
+  let shortURL = req.body.shortURL;
+  urlDatabase[shortURL] = longURL;
+  res.redirect('/urls');
 });
 
 app.get("/urls", (req, res) => {

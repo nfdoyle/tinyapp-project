@@ -4,16 +4,28 @@
   <title>TinyApp</title>
 </head>
 
-<body>
+<body style="font-size:20px; padding:50px;">
     <header>
         <% include ./partials/_header %>
     </header>
     <!-- Add your EJS code here -->
-    <ul>
-      <% for (url in urls) { %>
-          <li><%= urls[url]%> - <%=url%></li>
-      <% }; %>
-    </ul>
+    <table style="width:100%">
+        <% for (url in urls) { %>
+          <tr>
+              <td><%= urls[url]%></td>
+              <td> → </td> 
+              <td><%=url%></td>
+              <td><form action="/urls/<%=url%>" method="get">
+                <input type="submit" value="🔧" id="frm1_submit" />
+            </form></td>
+              <td>
+                <form method="POST" action="/urls/<%= url %>/delete">
+                    <button>␡</button>
+                </form></td>
+          </tr>  
+        <% }; %>      
+      </table>
+
 </body>
 </html>
 
