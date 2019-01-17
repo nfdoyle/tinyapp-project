@@ -9,7 +9,16 @@ const express = require("express");
 const app = express();
 const PORT = 8080; // default port 8080
 const bodyParser = require("body-parser");
+const cookieParser = require('cookie-parser')
 
+const urlDatabase = {
+  "b2xVn2": "http://www.lighthouselabs.ca",
+  "9sm5xK": "http://www.google.com"
+};
+
+const templateVars = {};
+
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname));
 
@@ -24,11 +33,6 @@ function generateRandomString() {
   return text;
 }
 
-const urlDatabase = {
-  "b2xVn2": "http://www.lighthouselabs.ca",
-  "9sm5xK": "http://www.google.com"
-};
-
 app.get("/", (req, res) => {
   
   res.redirect(`/urls/`)
@@ -41,13 +45,31 @@ app.get("/u/:shortURL", (req, res) => {
 });
 
 app.get("/urls/new", (req, res) => {
-  res.render("urls_new");
+  res.render("urls_new", templateVars);
 });
 
 app.post("/urls", (req, res) => {
   let randString = generateRandomString();
   urlDatabase[randString] = req.body.longURL;
-  res.redirect(`/urls/${randString}`)        // Respond with 'Ok' (we will replace this)
+  res.redirect(`/urls/${randString}`)       
+});
+
+app.post("/login", (req, res) => {
+  // do biz
+  console.log("line 59:" + req.body);
+  res.cookie("username", req.body.username);
+  
+  templateVars.username = req.cookies["username"];
+  console.log(templateVars);
+  res.redirect(`/urls`)        
+});
+
+app.post("/logout", (req, res) => {
+  // do biz
+  res.clearCookie("username");
+  delete templateVars.username;
+  
+  res.redirect(`/urls`)        
 });
 
 app.get("/urls.json", (req, res) => {
@@ -67,7 +89,9 @@ app.post('/urls/:id', (req, res) => {
 });
 
 app.get("/urls", (req, res) => {
-  let templateVars = { urls: urlDatabase };
+  templateVars.urls = urlDatabase;
+  templateVars.username = req.cookies["username"];
+  
   res.render("urls_index", templateVars);
 });
 
@@ -76,10 +100,10 @@ app.get("/hello", (req, res) => {
 });
 
 app.get("/urls/:id", (req, res) => {
-  let templateVars = { 
-    shortURL: req.params.id,
-    urls: urlDatabase
-   };
+  
+  templateVars.shortURL = req.params.id;
+  templateVars.urls = urlDatabase;
+   
   res.render("urls_show", templateVars);
 });
 

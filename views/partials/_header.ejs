@@ -3,6 +3,20 @@
     
         <div class="navbar-header">
             <h1>TinyApp</h1>
+            <% if (username) { %>
+                <form action="/logout" method="POST" >
+                    <label for="username">Welcome back, <%= username%></label>
+                    <input type="submit" value="Logout">
+                  </form>
+             <% }; %>
+             <% if (!username) { %>  
+            <form action="/login" method="POST" >
+                <label for="username">Username:</label>
+                <input id="username" type="text" name="username" placeholder="Welcome back!" style="width: 100px">
+                <input type="submit" value="Login">
+              </form>
+              
+              <% }; %>
             <a class="navbar-brand" href="https://github.com/nfdoyle">
                 <span class="glyphicon glyphicon glyphicon-tree-deciduous"></span>
                 
