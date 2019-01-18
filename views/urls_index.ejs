@@ -3,7 +3,7 @@
 <head>
   <title>TinyApp</title>
    <style> body { 
-        /* The image used */
+        /* BEWARE: Only uncomment out the style below if you're ready for extreme style*/
         /* background-image: url(/views/background.jpeg);
       
         background-color: black;  */
@@ -27,7 +27,7 @@
     <table style="width:100%">
         <% for (url in urls) { %>
             <% if (urls[url].creator == user.id || urls[url].creator == 'admin') { %>
-            <tr>
+            <tr><font face = "Arial">
                 <td><%= urls[url].url%></td>
                 <td> → </td> 
                 <td><%=urls[url].id%></td>
@@ -38,6 +38,7 @@
                     <form method="POST" action="/urls/<%= url %>/delete">
                         <button>🗑</button>
                     </form></td>
+                    </font>
             </tr>  
           <% }; %> 
         <% }; %>      
