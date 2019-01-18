@@ -2,14 +2,23 @@
 <html lang="en">
 <head>
   <title>TinyApp</title>
+  <style>
+        div {
+              background-color: whitesmoke;
+              border-radius: 10px;
+            }
+      </style>
 </head>
 
 
 <body style="font-size:20px; padding:50px;">
     <header>
+        <div>
         <% include ./partials/_header %>
+        </div>
     </header>
     <!-- Add your EJS code here -->
+    <div>
     <h1>
         ShortURL: <%=shortURL%>
     </h1>
@@ -19,6 +28,7 @@
       <input id="shortURL" name="shortURL" type="hidden" value=<%= shortURL%>>
       <input type="submit" value="Update">
     </form>
+    </div>
 </body>
 </html>
 

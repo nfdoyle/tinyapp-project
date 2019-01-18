@@ -2,21 +2,28 @@
 <html lang="en">
 <head>
   <title>TinyApp</title>
-  <!-- <style> body { 
+   <style> body { 
         /* The image used */
-        background-image: url(/views/background.jpeg);
+        /* background-image: url(/views/background.jpeg);
       
-        background-color: black
-        background-position: center;
+        background-color: black;  */
+        
         }
-    </style> -->
+        div {
+            background-color: whitesmoke;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 
 <body style="font-size:20px; padding:50px;">
     <header>
+        <div>
         <% include ./partials/_header %>
+        </div>
     </header>
     <!-- Add your EJS code here -->
+    <div>
     <table style="width:100%">
         <% for (url in urls) { %>
           <tr>
@@ -28,11 +35,12 @@
             </form></td>
               <td>
                 <form method="POST" action="/urls/<%= url %>/delete">
-                    <button>␡</button>
+                    <button>🗑</button>
                 </form></td>
           </tr>  
         <% }; %>      
       </table>
+      </div>
 
 </body>
 </html>

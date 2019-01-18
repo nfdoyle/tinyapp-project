@@ -1,22 +1,11 @@
+<head>
+        
+</head>
 <nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-    
+    <div class="container-fluid">   
         <div class="navbar-header">
-            <h1>TinyApp</h1>
-            <% if (username) { %>
-                <form action="/logout" method="POST" >
-                    <label for="username">Welcome back, <%= username%></label>
-                    <input type="submit" value="Logout">
-                  </form>
-             <% }; %>
-             <% if (!username) { %>  
-            <form action="/login" method="POST" >
-                <label for="username">Username:</label>
-                <input id="username" type="text" name="username" placeholder="Welcome back!" style="width: 100px">
-                <input type="submit" value="Login">
-              </form>
-              
-              <% }; %>
+            <h2>TinyApp</h2>
+            
             <a class="navbar-brand" href="https://github.com/nfdoyle">
                 <span class="glyphicon glyphicon glyphicon-tree-deciduous"></span>
                 
@@ -26,6 +15,14 @@
             <ul class="nav navbar-nav">
                 <li><a href="/urls">URLS</a></li>
                 <li><a href="/urls/new">add URL</a></li>
+                <li><a href="/register">Register</a></li>
+                <li>
+                        <% if (!user.id){ %>
+                    <a href="/login">Login</a>
+                    <%} else {%>
+                    <a href="/logout">Logout</a>   
+                    <%}%>
+                </li>
             </ul>
         </div>
     

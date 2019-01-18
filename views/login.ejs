@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+          <title>
+            TinyApp
+          </title>
+       
+      <style>
+          div {
+                background-color: whitesmoke;
+                border-radius: 10px;
+              }
+        </style>
+    
+  </head>
+  <body style="font-size:20px; padding:50px;">
+    <header>
+      <div>
+          <% include partials/_header %>
+      </div>
+    </header>
+    <div>
+      <br>
+      <h4>Login:</h4>
+        <form action="/login" method="POST" >
+          <label for="email">Enter e-mail:  </label>
+          <input id="email" type="text" name="email" placeholder="E-mail" style="width: 300px">
+          <br>
+        
+          <label for="password">Enter password:  </label>
+          <input id="password" type="text" name="password" placeholder="********" style="width: 300px">
+          <input type="submit" value="Submit">
+        </form>
+    
+    </div>
+  </body>
+</html>
