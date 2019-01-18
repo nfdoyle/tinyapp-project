@@ -26,18 +26,20 @@
     <div>
     <table style="width:100%">
         <% for (url in urls) { %>
-          <tr>
-              <td><%= urls[url]%></td>
-              <td> → </td> 
-              <td><%=url%></td>
-              <td><form action="/urls/<%=url%>" method="get">
-                <input type="submit" value="🔧" id="frm1_submit" />
-            </form></td>
-              <td>
-                <form method="POST" action="/urls/<%= url %>/delete">
-                    <button>🗑</button>
+            <% if (urls[url].creator == user.id || urls[url].creator == 'admin') { %>
+            <tr>
+                <td><%= urls[url].url%></td>
+                <td> → </td> 
+                <td><%=urls[url].id%></td>
+                <td><form action="/urls/<%=url%>" method="get">
+                    <input type="submit" value="🔧" id="frm1_submit" />
                 </form></td>
-          </tr>  
+                <td>
+                    <form method="POST" action="/urls/<%= url %>/delete">
+                        <button>🗑</button>
+                    </form></td>
+            </tr>  
+          <% }; %> 
         <% }; %>      
       </table>
       </div>

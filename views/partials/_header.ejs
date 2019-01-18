@@ -4,23 +4,24 @@
 <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">   
         <div class="navbar-header">
-            <h2>TinyApp</h2>
+            <br>
+            <center><h2>TinyApp</h2></center>
             
-            <a class="navbar-brand" href="https://github.com/nfdoyle">
+            <a style="text-decoration: none" class="navbar-brand" href="https://github.com/nfdoyle">
                 <span class="glyphicon glyphicon glyphicon-tree-deciduous"></span>
                 
                 @nfdoyle
             </a>
     
             <ul class="nav navbar-nav">
-                <li><a href="/urls">URLS</a></li>
-                <li><a href="/urls/new">add URL</a></li>
-                <li><a href="/register">Register</a></li>
+                <li><a style="text-decoration: none" href="/urls">URLS</a></li>
+                <li><a style="text-decoration: none" href="/urls/new">add URL</a></li>
+                <li><a style="text-decoration: none" href="/register">Register</a></li>
                 <li>
                         <% if (!user.id){ %>
-                    <a href="/login">Login</a>
+                    <a style="text-decoration: none" href="/login">Login</a>
                     <%} else {%>
-                    <a href="/logout">Logout</a>   
+                    <a style="text-decoration: none" href="/logout">Logout</a>   
                     <%}%>
                 </li>
             </ul>
