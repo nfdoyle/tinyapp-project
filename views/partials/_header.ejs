@@ -1,40 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <style>
-        .title {
-        background-color: white;
-        color: darkslategrey;
-        }
-    </style>
-     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">   
-</head>
-<nav class="navbar navbar-default" role="navigation">
-        <font face = "Arial">
-    <div class="container-fluid">   
-        <div class="navbar-header">
-            <br>
-            <center>
-            <div class="title" style="width: 300px;"> <font face = "Arial" size = "24">TinyApp</font>
-            </div>
-            </center>
-            <a style="text-decoration: none" class="navbar-brand" href="https://github.com/nfdoyle">
-                
-                
-                @nfdoyle
-            </a>
+    <meta name=“viewport” content=“width=device-width, initial-scale=1.0">
+  <title>TinyApp</title>
+  <style>
+  html, body {
+    margin: 0;
+    height: 100%;
+    background-color: whitesmoke;
+    color: whitesmoke;
+  }
+   
+  h2.b{
+    font-family: "Helvetica", cursive, serif;
     
-            <ul class="nav navbar-nav">
-                <li><a style="text-decoration: none" href="/urls">URLS</a></li>
-                <li><a style="text-decoration: none" href="/urls/new">add URL</a></li>
-                <li><a style="text-decoration: none" href="/register">Register</a></li>
-                <li>
-                        <% if (!user.id){ %>
-                    <a style="text-decoration: none" href="/login">Login</a>
-                    <%} else {%>
-                    <a style="text-decoration: none" href="/logout">Logout</a>   
-                    <%}%>
-                </li>
-            </ul>
-        </div>
-    </font>
-    </div>
-    </nav>
+  }
+  
+  p.a {
+    font: helvetica, sans-serif;
+    font-size: 35;
+  }
+    .navmenu {
+    
+    
+  }
+  .navlink {
+      font-size: 14px;
+      text-transform: uppercase;
+      display: flex;
+    justify-content: center;
+  }
+  div.jumbotron{
+    margin-bottom: 0px;
+  }
+  div.navlink{
+    background-color: whitesmoke;
+  }
+
+
+  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color:whitesmoke">
+  <div class="jumbotron" style="text-align: center" style="background-color: whitesmoke" style="margin-bottom: 0px;">
+      <h2 class="b">TinyApp</h2>
+    <div class="navmenu">
+        <div class="navlink">        
+     
+        <ul class="nav navbar-nav" >
+            <li><a style="text-decoration: none" style="align-items: center" href="https://github.com/nfdoyle">@nfdoyle</a></li>
+            <li><a style="text-decoration: none" style="align-items: center" href="/urls">my URLS</a></li>
+            <li><a style="text-decoration: none" style="align-items: center" href="/urls/new">add URL</a></li>
+            <li><a style="text-decoration: none" style="align-items: center" href="/register">Register</a></li>
+            <li>
+                    <% if (!user.id){ %>
+                <a style="text-decoration: none" href="/login">Login</a>
+                <%} else {%>
+                <a style="text-decoration: none" href="/logout">Logout [<%= user.email %>]</a>   
+                <%}%>
+            </li>
+        </ul>
+      </div>
+      </div>
+    </div>    
+</body>

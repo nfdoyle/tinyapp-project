@@ -4,30 +4,35 @@
   <title>TinyApp</title>
   <style>
         div {
-              background-color: whitesmoke;
+              background-color: white;
               border-radius: 10px;
+            }
+        .content {
+                max-width: 500px;
+                margin: auto;
             }
       </style>
       <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </head>
 
 
-<body style="font-size:20px; padding:50px;">
+<body style="font-size:20px;">
     <header>
         <div>
         <% include ./partials/_header %>
         </div>
     </header>
     <!-- Add your EJS code here -->
-    <div>
-    <h1>
+    <div class="content">
+        <br>
+    <h1 style="text-align-last: center">
         ShortURL: <%=shortURL%>
     </h1>
     <form action="/urls/:id" method="POST">
       <label for="longURL">Update URL:</label>
       <input id="longURL" type="text" name="longURL" placeholder=<%= urls[shortURL].url%> style="width: 300px">
       <input id="shortURL" name="shortURL" type="hidden" value=<%= shortURL%>>
-      <input type="submit" value="Update">
+      <input style="display: block; margin: auto" type="submit" value="Update">
     </form>
     </div>
 </body>

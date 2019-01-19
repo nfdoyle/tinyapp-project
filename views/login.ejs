@@ -7,31 +7,59 @@
        
       <style>
           div {
-                background-color: whitesmoke;
+                background-color: white;
                 border-radius: 10px;
+              }
+          .content {
+            max-width: 500px;
+            margin: auto;
               }
         </style>
     
   </head>
-  <body style="font-size:20px; padding:50px;">
+  <body style="font-size:20px;">
     <header>
       <div>
           <% include partials/_header %>
       </div>
     </header>
-    <div>
+    <div class="content">
       <br>
-      <h4>Login:</h4>
-        <form action="/login" method="POST" >
-          <label for="email">Enter e-mail:  </label>
-          <input id="email" type="text" name="email" placeholder="E-mail" style="width: 300px">
-          <br>
+        <h2 style="text-align-last: center"> Login:</h2>
+        <table>
+            <tr>
+              <td>
+      <form action="/login" method="POST" >
+        <label for="email">Enter e-mail: </label></td><td>
+        <input id="email" type="text" name="email" placeholder="E-mail" style="width: 300px">
+      </td>
+      </tr><tr>
         
-          <label for="password">Enter password:  </label>
-          <input id="password" type="text" name="password" placeholder="********" style="width: 300px">
-          <input type="submit" value="Submit">
-        </form>
+        <br>
+        <td>
+        <label for="password">Select password: </label></td><td>
+        <input id="password" type="text" name="password" placeholder="********" style="width: 300px"></td>
+        </tr>
+          </table>
+          <br>
+        <td><input style="display: block; margin: auto" type="submit" value="Submit"></td>
+       
+        
     
     </div>
   </body>
 </html>
+
+
+
+<!-- <br>
+      <h4> Login:</h4>
+        <form action="/login" method="POST" >
+          <label for="email"> Enter e-mail:    </label>
+          <input id="email" type="text" name="email" placeholder="E-mail" style="width: 300px">
+          <br>
+        
+          <label for="password"> Enter password:  </label>
+          <input id="password" type="text" name="password" placeholder="********" style="width: 300px">
+          <input type="submit" value="Submit">
+        </form> -->

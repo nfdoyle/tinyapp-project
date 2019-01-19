@@ -8,19 +8,24 @@
   <head>
     <style>
       div {
-            background-color: whitesmoke;
+            background-color: white;
             border-radius: 10px;
+          }
+      .content {
+            max-width: 500px;
+            margin: auto;
           }
     </style>
     
   </head>
-  <body style="font-size:20px; padding:50px;">
+  <body style="font-size:20px;">
     <header>
       <div>
           <% include partials/_header %>
       </div>
     </header>
-    <div>
+    <div class="content">
+      <br>
     <form action="/urls" method="POST" >
       <label for="longURL">Enter a URL:</label>
       <input id="longURL" type="text" name="longURL" placeholder="http://" style="width: 300px">
