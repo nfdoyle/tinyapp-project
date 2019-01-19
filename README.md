@@ -28,6 +28,4 @@ The server should be started from the command line, in the following manner:
 - body-parser
 - cookie-session
 
-### Note: Easter egg in URL index
-
 @nfdoyle -- 18 January 2019
